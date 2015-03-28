@@ -24,6 +24,10 @@ public class Powerball
             {
                 count++;
             }
+            else
+            {
+                System.out.println("Must be greater than zero.");
+            }
         } while (count < 1);
         
         // Reset count.
@@ -56,6 +60,10 @@ public class Powerball
             {
                 count++;
             }
+            else
+            {
+                System.out.println("Must be greater than zero.");
+            }
         } while (count < 1);
         
         System.out.println();
@@ -70,7 +78,9 @@ public class Powerball
         // Get Powerball number from user and reset count once again.
         int playerPowerball = 0;
         count = 0;     
-
+        
+        System.out.println();
+        
         do
         {            
             System.out.print("Enter Powerball Number: ");
@@ -93,9 +103,15 @@ public class Powerball
         printArray(playerDraw, "Player");
         printArray(computerDraw, "Computer");
         
+        System.out.println(); 
+        
+        /*
+         * Simulate a random Powerball number
+         */
         int computerPowerball = (int)(1 + Math.random() * m);
         
-        System.out.println("Powerball Number: " + computerPowerball);
+        System.out.println("Player Powerball Number: " + playerPowerball);
+        System.out.println("Computer Powerball Number: " + computerPowerball);
         
         System.out.println();
         
