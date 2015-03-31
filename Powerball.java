@@ -13,8 +13,9 @@ public class Powerball
         int n = 0;
         int m = 0;
         
-        int count = 0;
-        
+        int count = 0;       
+		
+		//Determines how many numbers the ticket will have that excludes the powerball number. (1-k)
         do
         {
             System.out.print("Numbers (non-Powerball): ");
@@ -33,6 +34,7 @@ public class Powerball
         // Reset count.
         count = 0;
         
+		// Determines the maximum number one can input for the ticket. (1-n)
         do
         {
             System.out.print("Maximum (non-Powerball): ");
@@ -51,6 +53,7 @@ public class Powerball
         // Reset count.
         count = 0;
         
+		// Determines the maximum number for the Powerball. (1-m)
         do
         {
             System.out.print("Maximum (For Powerball): ");
@@ -81,6 +84,7 @@ public class Powerball
         
         System.out.println();
         
+		// Input section for Powerball number and checking if it is acceptable. 
         do
         {            
             System.out.print("Enter Powerball Number: ");
@@ -100,6 +104,7 @@ public class Powerball
         
         System.out.println();
         
+		// Prints the arrays on the screen.
         printArray(playerDraw, "Player");
         printArray(computerDraw, "Computer");
         
@@ -110,21 +115,16 @@ public class Powerball
          */
         int computerPowerball = (int)(1 + Math.random() * m);
         
+		// Print the Powerball numbers of both the player and the computer.
         System.out.println("Player Powerball Number: " + playerPowerball);
         System.out.println("Computer Powerball Number: " + computerPowerball);
         
         System.out.println();
         
-        if (containSameElements(playerDraw, computerDraw))
+		// Check to see if they are the same.
+        if (containSameElements(playerDraw, computerDraw) && playerPowerball == computerPowerball)
         {
-            if (playerPowerball == computerPowerball)
-            {    
-                System.out.println("You Win!");
-            }
-            else
-            {
-                System.out.println("Sorry, you lose.");
-            }
+            System.out.println("You Win!");
         }
         else
         {
@@ -202,7 +202,8 @@ public class Powerball
     }
     
     // Sorts the array in numerical order.
-    // It will continue to swap array[i] until it is the order of smallest to largest.
+    // It will continue to swap array[i] and array[k] until it is the order of smallest to largest.
+	// Very inefficient for larger arrays, but is simple and effective on smaller sets of data.
     public static int[] sortArray(int[] array)
     {
         for (int i = 0; i < array.length; i++)
@@ -228,7 +229,7 @@ public class Powerball
     
     public static double jackpotChance(int k, int n, int m)
     {
-        // Set these to 1 to prevent divide by zero
+        // Set these to 1 for factorial.
         int topHalf      = 1;
         int bottomHalf   = 1;
         
